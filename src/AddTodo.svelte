@@ -95,10 +95,19 @@
         name="addTodo"
         id="addTodo"
         placeholder="add todo..."
-        bind:value={todoInput} />
-      {#each tagList as tag}
-        <Tag {tag} />
-      {/each}
+        bind:value={todoInput}
+        on:keypress={e => {
+          if (e.code === 'Enter' && todoInput.length > 0) {
+            addTodo(new Todo(todoInput, tagList));
+            todoInput = '';
+            tagList = [];
+          }
+        }} />
+      <div class="tag-container">
+        {#each tagList as tag}
+          <Tag {tag} />
+        {/each}
+      </div>
       <input
         class="plain-input tags-input"
         type="text"

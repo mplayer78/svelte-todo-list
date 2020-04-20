@@ -2,6 +2,7 @@
   export let todo;
   import { todos } from "./stores/todos.js";
   import Tag from "./Tag.svelte";
+  import { fade } from "svelte/transition";
   function handleDelete() {
     todos.update(todos => todos.filter(val => val.title !== todo.title));
   }
@@ -68,10 +69,11 @@
   .tag-container {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
   }
 </style>
 
-<div class="todo {todo.done ? 'todo-done' : ''}">
+<div class="todo {todo.done ? 'todo-done' : ''}" transition:fade>
   <div class="text-container">
 
     <h3 class="todo-text">{todo.title}</h3>

@@ -17,7 +17,6 @@
     padding: 0.1rem 0.5rem;
     white-space: nowrap;
     margin: 0.2rem;
-    max-width: 5rem;
   }
 </style>
 
